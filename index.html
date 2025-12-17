@@ -821,6 +821,35 @@
 
       const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
+      /* ===========================
+         ✅ LINK-LOGIK FÜR HOMESCREEN
+         ./ueben/<slug>/  -> https://humaneed.github.io/<slug>/
+         ./xyz/           -> https://humaneed.github.io/xyz/
+         =========================== */
+      const GH_BASE = 'https://humaneed.github.io/';
+
+      const normalizeTileLinks = () => {
+        document.querySelectorAll('a.tile[href]').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          if (!href) return;
+
+          // absolute Links nicht anfassen
+          if (/^https?:\/\//i.test(href) || href.startsWith('mailto:') || href.startsWith('#')) return;
+
+          // ./ueben/<slug>/ -> GH_BASE + <slug>/
+          if (href.startsWith('./ueben/')) {
+            const rest = href.slice('./ueben/'.length); // z.B. "reim-radar/"
+            a.href = GH_BASE + rest.replace(/^\/+/, '');
+            return;
+          }
+
+          // ./xyz/ -> GH_BASE + xyz/
+          if (href.startsWith('./')) {
+            a.href = GH_BASE + href.slice(2);
+          }
+        });
+      };
+
       const coinCountEl = $('#coin-count');
       const gradeValEl = $('#grade-val');
       const coinsPill = $('#coins-pill');
@@ -941,7 +970,10 @@
         }
       });
 
+      // ✅ erst Links normalisieren, dann Header-Update
+      normalizeTileLinks();
       updateHeader();
+
       console.log('✅ Kidsneed geladen.');
     })();
   </script>
