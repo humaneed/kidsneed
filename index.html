@@ -823,30 +823,38 @@
 
       /* ===========================
          ✅ LINK-LOGIK FÜR HOMESCREEN
-         ./ueben/<slug>/  -> https://humaneed.github.io/<slug>/
-         ./xyz/           -> https://humaneed.github.io/xyz/
+         Ziel: https://humaneed.github.io/<APPNAME>/
+         (APPNAME = letzter Pfadteil)
          =========================== */
       const GH_BASE = 'https://humaneed.github.io/';
 
       const normalizeTileLinks = () => {
         document.querySelectorAll('a.tile[href]').forEach(a => {
-          const href = a.getAttribute('href') || '';
-          if (!href) return;
+          const raw = (a.getAttribute('href') || '').trim();
+          if (!raw) return;
 
-          // absolute Links nicht anfassen
-          if (/^https?:\/\//i.test(href) || href.startsWith('mailto:') || href.startsWith('#')) return;
+          // Mail/Anker nicht anfassen
+          if (raw.startsWith('mailto:') || raw.startsWith('#')) return;
 
-          // ./ueben/<slug>/ -> GH_BASE + <slug>/
-          if (href.startsWith('./ueben/')) {
-            const rest = href.slice('./ueben/'.length); // z.B. "reim-radar/"
-            a.href = GH_BASE + rest.replace(/^\/+/, '');
-            return;
-          }
+          // Nur humaneed/relative Links normalisieren (Fremdseiten nicht kaputt machen)
+          const isRelative = raw.startsWith('./') || raw.startsWith('/');
+          const isHumaneedAbs = /^https?:\/\/humaneed\.github\.io\//i.test(raw);
+          if (!(isRelative || isHumaneedAbs)) return;
 
-          // ./xyz/ -> GH_BASE + xyz/
-          if (href.startsWith('./')) {
-            a.href = GH_BASE + href.slice(2);
-          }
+          // Query/Hash entfernen
+          const clean = raw.split('#')[0].split('?')[0];
+
+          // Pfadsegmente ermitteln, Base entfernen
+          const parts = clean
+            .replace(/^https?:\/\/humaneed\.github\.io\//i, '')
+            .split('/')
+            .filter(Boolean);
+
+          const slug = parts[parts.length - 1];
+          if (!slug) return;
+
+          // Ziel: https://humaneed.github.io/<slug>/
+          a.href = GH_BASE + slug + '/';
         });
       };
 
