@@ -104,7 +104,6 @@
       }
     }
 
-    /* ===== HEADER ===== */
     header {
       height: 72px;
       padding: 0 var(--s-3);
@@ -130,9 +129,6 @@
       text-transform: uppercase;
       letter-spacing: 0.10em;
       color: var(--ink-secondary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .top-actions { display: flex; gap: var(--s-2); align-items: center; }
@@ -155,7 +151,6 @@
     .pill .icon { font-size: 18px; }
     .pill .val { font-weight: 900; font-size: var(--text-sm); }
 
-    /* ===== VIEWPORT ===== */
     .viewport {
       flex: 1;
       overflow: auto;
@@ -167,7 +162,6 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* ===== HERO ===== */
     .hero {
       border: 3px solid var(--ink-primary);
       border-radius: var(--radius-xl);
@@ -192,7 +186,6 @@
       color: var(--ink-secondary);
     }
 
-    /* ===== SECTION TITLE ===== */
     .section-title {
       margin: var(--s-4) 0 var(--s-2);
       text-align: center;
@@ -204,7 +197,6 @@
     }
     .section-title:first-of-type { margin-top: var(--s-2); }
 
-    /* ===== TILE GRID ===== */
     .tile-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -253,7 +245,6 @@
       color: var(--ink-secondary);
     }
 
-    /* Tile accent colors */
     .tile[data-mod="math"]  { background: rgba(74,124,145,.12); }
     .tile[data-mod="deu"]   { background: rgba(196,114,108,.12); }
     .tile[data-mod="world"] { background: rgba(123,160,138,.12); }
@@ -261,7 +252,6 @@
     .tile[data-mod="crea"]  { background: rgba(212,165,116,.12); }
     .tile[data-mod="tools"] { background: rgba(125,155,143,.12); }
 
-    /* ===== FOOTER ===== */
     footer {
       flex: 0 0 auto;
       padding: var(--s-2) var(--s-3);
@@ -273,7 +263,6 @@
       gap: var(--s-2);
     }
 
-    /* ===== BUTTONS ===== */
     .btn {
       min-height: 48px;
       padding: 12px 14px;
@@ -299,9 +288,7 @@
 
     .btn.primary { background: var(--accent-math); color: var(--bg-card); }
     .btn.primary:hover { filter: brightness(1.05); }
-    .btn.small { flex: 0 0 auto; padding: 10px 12px; }
 
-    /* ===== OVERLAY & SHEET ===== */
     .overlay {
       position: absolute;
       inset: 0;
@@ -349,7 +336,6 @@
       box-shadow: var(--shadow-subtle);
       padding: var(--s-3);
     }
-    .card + .card { margin-top: var(--s-2); }
     .card.compact { border-width: 2px; }
 
     .card-label {
@@ -359,6 +345,7 @@
       gap: var(--s-2);
       margin-bottom: var(--s-2);
     }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -375,19 +362,11 @@
       user-select: none;
     }
 
-    .title {
-      margin: 0;
-      font-size: var(--text-xl);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
     .muted {
       margin: var(--s-1) 0 0;
       font-size: var(--text-sm);
       font-weight: 800;
       color: var(--ink-secondary);
-      white-space: pre-line;
     }
 
     .actions {
@@ -420,7 +399,6 @@
     .feedback .ftext { font-size: var(--text-sm); font-weight: 900; color: var(--ink-secondary); }
     .feedback strong { color: var(--ink-primary); }
 
-    /* ===== GRADE PICKER ===== */
     .grade-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -442,7 +420,6 @@
     .grade-btn:active { transform: scale(0.98); box-shadow: none; }
     .grade-btn.selected { background: var(--accent-math); color: white; }
 
-    /* ===== PARENT GATE INPUT ===== */
     .parent-input {
       flex: 1 1 100%;
       min-height: 48px;
@@ -453,7 +430,6 @@
       font-weight: 900;
     }
 
-    /* ===== LEGAL LINKS (Elternbereich) ===== */
     .legal-links {
       display: flex;
       flex-wrap: wrap;
@@ -468,7 +444,6 @@
       color: var(--ink-secondary);
     }
 
-    /* ===== ANIMATIONS ===== */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -478,7 +453,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 360px) {
       header { padding: 0 var(--s-2); }
       .viewport { padding: var(--s-2); }
@@ -491,28 +465,25 @@
 <body>
   <div id="app-frame">
 
-    <!-- ===== HEADER ===== -->
     <header>
       <div class="brand">
         <div class="brand-title">Kidsneed</div>
         <div class="brand-subtitle">Grundschule Kl. 1–4</div>
       </div>
-
       <div class="top-actions">
-        <div class="pill" id="grade-pill" title="Klasse wählen" role="button" tabindex="0" aria-label="Klasse wählen">
+        <div class="pill" id="grade-pill" role="button" tabindex="0" aria-label="Klasse wählen">
           <span class="icon">📚</span>
           <span class="val" id="grade-val">Kl. 1</span>
         </div>
-        <div class="pill" id="coins-pill" title="Punkte" role="button" tabindex="0" aria-label="Punkte anzeigen">
+        <div class="pill" id="coins-pill" role="button" tabindex="0" aria-label="Punkte">
           <span class="icon">⭐</span>
           <span class="val" id="coin-count">0</span>
         </div>
       </div>
     </header>
 
-    <!-- ===== MAIN VIEWPORT ===== -->
     <main class="viewport">
-      <!-- HERO -->
+
       <div class="hero">
         <h1>Alles an einem Ort.</h1>
         <p>Wähle ein Modul. Klasse oben einstellen.</p>
@@ -521,22 +492,20 @@
       <!-- LERNEN -->
       <div class="section-title">Lernen</div>
       <div class="tile-grid">
-       <a class="tile" data-mod="math" href="https://humaneed.github.io/math/">
+        <a class="tile" data-mod="math" href="https://humaneed.github.io/math/">
           <div class="tile-icon">∑</div>
           <div>
             <div class="tile-title">Mathe</div>
             <div class="tile-desc">Rechnen</div>
           </div>
         </a>
-
-       <a class="tile" data-mod="deu" href="https://humaneed.github.io/deugen/">
+        <a class="tile" data-mod="deu" href="https://humaneed.github.io/deugen/">
           <div class="tile-icon">Ab</div>
           <div>
             <div class="tile-title">Deutsch</div>
             <div class="tile-desc">Sprache</div>
           </div>
         </a>
-
         <a class="tile" data-mod="world" href="./welt/">
           <div class="tile-icon">🌍</div>
           <div>
@@ -544,7 +513,6 @@
             <div class="tile-desc">Entdecken</div>
           </div>
         </a>
-
         <a class="tile" data-mod="logic" href="./logik/">
           <div class="tile-icon">◆</div>
           <div>
@@ -554,8 +522,8 @@
         </a>
       </div>
 
-      <!-- DEUTSCH · Best-of -->
-      <div class="section-title">Deutsch</div>
+      <!-- DEUTSCH ÜBUNGEN -->
+      <div class="section-title">Deutsch Übungen</div>
       <div class="tile-grid">
         <a class="tile" data-mod="deu" href="./ueben/silben-klapper/">
           <div class="tile-icon">Si</div>
@@ -564,7 +532,6 @@
             <div class="tile-desc">Silben</div>
           </div>
         </a>
-
         <a class="tile" data-mod="deu" href="./ueben/reim-radar/">
           <div class="tile-icon">Re</div>
           <div>
@@ -572,7 +539,6 @@
             <div class="tile-desc">Reime</div>
           </div>
         </a>
-
         <a class="tile" data-mod="deu" href="./ueben/ie-ei-schalter/">
           <div class="tile-icon">ie</div>
           <div>
@@ -580,7 +546,6 @@
             <div class="tile-desc">ie/ei</div>
           </div>
         </a>
-
         <a class="tile" data-mod="deu" href="./ueben/satzbau-puzzle/">
           <div class="tile-icon">≡</div>
           <div>
@@ -588,7 +553,6 @@
             <div class="tile-desc">Satzbau</div>
           </div>
         </a>
-
         <a class="tile" data-mod="deu" href="./ueben/artikel-trainer/">
           <div class="tile-icon">der</div>
           <div>
@@ -598,8 +562,8 @@
         </a>
       </div>
 
-      <!-- MATHE · Best-of -->
-      <div class="section-title">Mathe</div>
+      <!-- MATHE ÜBUNGEN -->
+      <div class="section-title">Mathe Übungen</div>
       <div class="tile-grid">
         <a class="tile" data-mod="math" href="./ueben/zahlenlinie/">
           <div class="tile-icon">#</div>
@@ -608,7 +572,6 @@
             <div class="tile-desc">Zahlen</div>
           </div>
         </a>
-
         <a class="tile" data-mod="math" href="./ueben/zehner-bruecke/">
           <div class="tile-icon">10</div>
           <div>
@@ -616,7 +579,6 @@
             <div class="tile-desc">Zehner</div>
           </div>
         </a>
-
         <a class="tile" data-mod="math" href="./ueben/rechen-ampel/">
           <div class="tile-icon">✓</div>
           <div>
@@ -624,7 +586,6 @@
             <div class="tile-desc">Prüfen</div>
           </div>
         </a>
-
         <a class="tile" data-mod="math" href="./ueben/einmaleins-runden/">
           <div class="tile-icon">×</div>
           <div>
@@ -632,15 +593,13 @@
             <div class="tile-desc">Einmaleins</div>
           </div>
         </a>
-
         <a class="tile" data-mod="math" href="./ueben/kiosk-sachaufgaben/">
           <div class="tile-icon">🧺</div>
           <div>
-            <div class="tile-title">Kiosk-Sachaufgaben</div>
+            <div class="tile-title">Kiosk-Aufgaben</div>
             <div class="tile-desc">Text</div>
           </div>
         </a>
-
         <a class="tile" data-mod="math" href="./ueben/uhr-coach/">
           <div class="tile-icon">⏰</div>
           <div>
@@ -650,8 +609,8 @@
         </a>
       </div>
 
-      <!-- LOGIK · Best-of -->
-      <div class="section-title">Logik</div>
+      <!-- LOGIK ÜBUNGEN -->
+      <div class="section-title">Logik Übungen</div>
       <div class="tile-grid">
         <a class="tile" data-mod="logic" href="./ueben/muster-maschine/">
           <div class="tile-icon">▦</div>
@@ -660,7 +619,6 @@
             <div class="tile-desc">Muster</div>
           </div>
         </a>
-
         <a class="tile" data-mod="logic" href="./ueben/wenn-dann-detektiv/">
           <div class="tile-icon">→</div>
           <div>
@@ -668,7 +626,6 @@
             <div class="tile-desc">Wenn-Dann</div>
           </div>
         </a>
-
         <a class="tile" data-mod="logic" href="./ueben/kategorie-sortierer/">
           <div class="tile-icon">□</div>
           <div>
@@ -676,7 +633,6 @@
             <div class="tile-desc">Sortieren</div>
           </div>
         </a>
-
         <a class="tile" data-mod="logic" href="./ueben/labyrinth-tore/">
           <div class="tile-icon">▣</div>
           <div>
@@ -684,7 +640,6 @@
             <div class="tile-desc">Tore</div>
           </div>
         </a>
-
         <a class="tile" data-mod="logic" href="./ueben/aufmerksamkeits-check/">
           <div class="tile-icon">◎</div>
           <div>
@@ -694,7 +649,7 @@
         </a>
       </div>
 
-      <!-- KREATIV · Best-of -->
+      <!-- KREATIV -->
       <div class="section-title">Kreativ</div>
       <div class="tile-grid">
         <a class="tile" data-mod="crea" href="./ueben/pixel-maler/">
@@ -704,7 +659,6 @@
             <div class="tile-desc">Pixel</div>
           </div>
         </a>
-
         <a class="tile" data-mod="crea" href="./ueben/sticker-werkstatt/">
           <div class="tile-icon">⟂</div>
           <div>
@@ -712,7 +666,6 @@
             <div class="tile-desc">Symmetrie</div>
           </div>
         </a>
-
         <a class="tile" data-mod="crea" href="./ueben/geschichten-karten/">
           <div class="tile-icon">✶</div>
           <div>
@@ -720,7 +673,6 @@
             <div class="tile-desc">Story</div>
           </div>
         </a>
-
         <a class="tile" data-mod="crea" href="./kunst/">
           <div class="tile-icon">✎</div>
           <div>
@@ -728,7 +680,6 @@
             <div class="tile-desc">Malen</div>
           </div>
         </a>
-
         <a class="tile" data-mod="crea" href="./musik/">
           <div class="tile-icon">♪</div>
           <div>
@@ -748,7 +699,6 @@
             <div class="tile-desc">Status</div>
           </div>
         </a>
-
         <a class="tile" data-mod="tools" href="./rechner/">
           <div class="tile-icon">⚙</div>
           <div>
@@ -756,7 +706,6 @@
             <div class="tile-desc">Berechnen</div>
           </div>
         </a>
-
         <a class="tile" data-mod="tools" href="./profil/">
           <div class="tile-icon">👤</div>
           <div>
@@ -766,182 +715,14 @@
         </a>
       </div>
 
-      <!-- BEST-OF: DEUTSCH -->
-      <div class="section-title">Deutsch</div>
-      <div class="tile-grid">
-        <a class="tile" data-mod="deu" href="./ueben/silben-klapper/">
-          <div class="tile-icon">Si</div>
-          <div>
-            <div class="tile-title">Silben-Klapper</div>
-            <div class="tile-desc">Silben</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="deu" href="./ueben/reim-radar/">
-          <div class="tile-icon">Re</div>
-          <div>
-            <div class="tile-title">Reim-Radar</div>
-            <div class="tile-desc">Reime</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="deu" href="./ueben/ie-ei-schalter/">
-          <div class="tile-icon">ie</div>
-          <div>
-            <div class="tile-title">ie/ei-Schalter</div>
-            <div class="tile-desc">ie/ei</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="deu" href="./ueben/satzbau-puzzle/">
-          <div class="tile-icon">≡</div>
-          <div>
-            <div class="tile-title">Satzbau-Puzzle</div>
-            <div class="tile-desc">Satzbau</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="deu" href="./ueben/artikel-trainer/">
-          <div class="tile-icon">der</div>
-          <div>
-            <div class="tile-title">Artikel-Trainer</div>
-            <div class="tile-desc">Artikel</div>
-          </div>
-        </a>
-      </div>
-
-      <!-- BEST-OF: MATHE -->
-      <div class="section-title">Mathe Übungen</div>
-      <div class="tile-grid">
-        <a class="tile" data-mod="math" href="./ueben/zahlenlinie/">
-          <div class="tile-icon">#</div>
-          <div>
-            <div class="tile-title">Zahlenlinie</div>
-            <div class="tile-desc">Zahlen</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="math" href="./ueben/zehner-bruecke/">
-          <div class="tile-icon">10</div>
-          <div>
-            <div class="tile-title">Zehner-Brücke</div>
-            <div class="tile-desc">Zehner</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="math" href="./ueben/rechen-ampel/">
-          <div class="tile-icon">✓</div>
-          <div>
-            <div class="tile-title">Rechen-Ampel</div>
-            <div class="tile-desc">Prüfen</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="math" href="./ueben/einmaleins-runden/">
-          <div class="tile-icon">×</div>
-          <div>
-            <div class="tile-title">Einmaleins-Runden</div>
-            <div class="tile-desc">Einmaleins</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="math" href="./ueben/kiosk-sachaufgaben/">
-          <div class="tile-icon">🧺</div>
-          <div>
-            <div class="tile-title">Kiosk-Aufgaben</div>
-            <div class="tile-desc">Text</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="math" href="./ueben/uhr-coach/">
-          <div class="tile-icon">⏰</div>
-          <div>
-            <div class="tile-title">Uhr-Coach</div>
-            <div class="tile-desc">Uhr</div>
-          </div>
-        </a>
-      </div>
-
-      <!-- BEST-OF: LOGIK -->
-      <div class="section-title">Logik Übungen</div>
-      <div class="tile-grid">
-        <a class="tile" data-mod="logic" href="./ueben/muster-maschine/">
-          <div class="tile-icon">▦</div>
-          <div>
-            <div class="tile-title">Muster-Maschine</div>
-            <div class="tile-desc">Muster</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="logic" href="./ueben/wenn-dann-detektiv/">
-          <div class="tile-icon">→</div>
-          <div>
-            <div class="tile-title">Wenn-Dann-Detektiv</div>
-            <div class="tile-desc">Wenn-Dann</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="logic" href="./ueben/kategorie-sortierer/">
-          <div class="tile-icon">□</div>
-          <div>
-            <div class="tile-title">Kategorie-Sortierer</div>
-            <div class="tile-desc">Sortieren</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="logic" href="./ueben/labyrinth-tore/">
-          <div class="tile-icon">▣</div>
-          <div>
-            <div class="tile-title">Labyrinth-Tore</div>
-            <div class="tile-desc">Tore</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="logic" href="./ueben/aufmerksamkeits-check/">
-          <div class="tile-icon">◎</div>
-          <div>
-            <div class="tile-title">Aufmerksamkeits-Check</div>
-            <div class="tile-desc">Fokus</div>
-          </div>
-        </a>
-      </div>
-
-      <!-- BEST-OF: KREATIV -->
-      <div class="section-title">Kreativ Übungen</div>
-      <div class="tile-grid">
-        <a class="tile" data-mod="crea" href="./ueben/pixel-maler/">
-          <div class="tile-icon">▩</div>
-          <div>
-            <div class="tile-title">Pixel-Maler</div>
-            <div class="tile-desc">Pixel</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="crea" href="./ueben/sticker-werkstatt/">
-          <div class="tile-icon">⟂</div>
-          <div>
-            <div class="tile-title">Sticker-Werkstatt</div>
-            <div class="tile-desc">Symmetrie</div>
-          </div>
-        </a>
-
-        <a class="tile" data-mod="crea" href="./ueben/geschichten-karten/">
-          <div class="tile-icon">✶</div>
-          <div>
-            <div class="tile-title">Geschichten-Karten</div>
-            <div class="tile-desc">Story</div>
-          </div>
-        </a>
-      </div>
     </main>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
-      <button class="btn" id="reload-btn" type="button" aria-label="Neu laden" title="Neu laden">⏻</button>
+      <button class="btn" id="reload-btn" type="button" aria-label="Neu laden">⏻</button>
       <button class="btn primary" id="open-parent" type="button">👨‍👩‍👧 Eltern</button>
     </footer>
 
-    <!-- ===== OVERLAY: KLASSE WÄHLEN ===== -->
+    <!-- KLASSE WÄHLEN -->
     <div class="overlay" id="grade-overlay" role="dialog" aria-modal="true" aria-label="Klasse wählen">
       <div class="sheet">
         <h2>Klasse wählen</h2>
@@ -958,7 +739,7 @@
       </div>
     </div>
 
-    <!-- ===== OVERLAY: ELTERNBEREICH ===== -->
+    <!-- ELTERNBEREICH -->
     <div class="overlay" id="parent-overlay" role="dialog" aria-modal="true" aria-label="Elternbereich">
       <div class="sheet">
         <h2>Elternbereich</h2>
@@ -970,19 +751,11 @@
           </div>
           <p class="muted" id="pg-question" style="margin: 0 0 var(--s-2); font-size: var(--text-md); color: var(--ink-primary);">…</p>
           <div class="actions" style="margin-top: 0;">
-            <input
-              id="pg-input"
-              class="parent-input"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              placeholder="Antwort eingeben"
-              aria-label="Antwort eingeben"
-            >
+            <input id="pg-input" class="parent-input" inputmode="numeric" pattern="[0-9]*" placeholder="Antwort eingeben" aria-label="Antwort eingeben">
             <button class="btn primary" id="pg-unlock" type="button">Entsperren</button>
           </div>
         </div>
 
-        <!-- Nach Entsperren sichtbar -->
         <div id="pg-unlocked" style="display: none;">
           <div class="feedback" style="margin-top: var(--s-2);">
             <div class="ficon">✅</div>
@@ -999,15 +772,11 @@
             </div>
           </div>
 
-          <!-- Impressum & Datenschutz -->
           <div class="legal-links">
-  <a class="btn" href="https://humaneed.github.io/Impressum/" target="_blank" rel="noopener noreferrer" role="button">
-    ℹ️ Impressum
-  </a>
-  <a class="btn" href="https://humaneed.github.io/Datenschutz/" target="_blank" rel="noopener noreferrer" role="button">
-    🔒 Datenschutz
-  </a>
-</div>
+            <a class="btn" href="https://humaneed.github.io/Impressum/" target="_blank" rel="noopener noreferrer">ℹ️ Impressum</a>
+            <a class="btn" href="https://humaneed.github.io/Datenschutz/" target="_blank" rel="noopener noreferrer">🔒 Datenschutz</a>
+          </div>
+        </div>
 
         <div class="row" style="margin-top: var(--s-2);">
           <button class="btn" id="parent-cancel" type="button">Abbrechen</button>
@@ -1021,7 +790,6 @@
     (() => {
       'use strict';
 
-      // ===== UTILITIES =====
       const $ = (sel) => document.querySelector(sel);
       const $$ = (sel) => document.querySelectorAll(sel);
 
@@ -1053,7 +821,6 @@
 
       const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-      // ===== HEADER =====
       const coinCountEl = $('#coin-count');
       const gradeValEl = $('#grade-val');
       const coinsPill = $('#coins-pill');
@@ -1071,19 +838,14 @@
         setTimeout(() => { el.style.transform = ''; }, 160);
       };
 
-      // Coins: nur anzeigen (kein Klick-Bonus hier)
-      coinsPill?.addEventListener('click', () => {
-        bump(coinsPill);
-      });
+      coinsPill?.addEventListener('click', () => bump(coinsPill));
 
-      // ===== OVERLAYS =====
       const gradeOverlay = $('#grade-overlay');
       const parentOverlay = $('#parent-overlay');
 
       const openOverlay = (ov) => ov?.classList.add('open');
       const closeOverlay = (ov) => ov?.classList.remove('open');
 
-      // Klasse wählen
       gradePill?.addEventListener('click', () => openOverlay(gradeOverlay));
       gradePill?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -1114,10 +876,8 @@
         closeOverlay(gradeOverlay);
       });
 
-      // Reload
       $('#reload-btn')?.addEventListener('click', () => window.location.reload());
 
-      // ===== ELTERNBEREICH =====
       const pgQuestion = $('#pg-question');
       const pgInput = $('#pg-input');
       const pgUnlock = $('#pg-unlock');
@@ -1174,7 +934,6 @@
         closeOverlay(parentOverlay);
       });
 
-      // ESC schließt Overlays
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           closeOverlay(gradeOverlay);
@@ -1182,7 +941,6 @@
         }
       });
 
-      // ===== INIT =====
       updateHeader();
       console.log('✅ Kidsneed geladen.');
     })();
